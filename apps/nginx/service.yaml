@@ -1,0 +1,14 @@
+#nginx Pod에 접근할 내부 Service 생성
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-gitops
+  namespace: gitops-demo
+spec:
+  selector:
+    app: nginx-gitops
+  ports:
+    - name: http
+      port: 80
+      targetPort: http
+  type: ClusterIP

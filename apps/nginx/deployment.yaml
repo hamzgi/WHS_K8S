@@ -1,0 +1,37 @@
+#nginx Pod 2개 실행
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-gitops
+  namespace: gitops-demo
+  labels:
+    app: nginx-gitops
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx-gitops
+  template:
+    metadata:
+      labels:
+        app: nginx-gitops
+    spec:
+      containers:
+        - name: nginx
+          image: nginx:1.28
+          ports:
+            - name: http
+              containerPort: 80
+          resources:
+            requests:
+              cpu: 50m
+              memory: 64Mi
+            limits:
+              cpu: 200m
+              memory: 128Mi
+          readinessProbe:
+            httpGet:
+              path: /
+              port: http
+            initialDelaySeconds: 3
+            periodSeconds: 5
