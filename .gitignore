@@ -1,0 +1,30 @@
+# Windows / editor
+Thumbs.db
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+kubeconfig*
+*.kubeconfig
+*.key
+*.pem
+credentials/
+secrets/
+
+# Helm package files
+*.tgz
+
+# Terraform / Vagrant state
+.terraform/
+*.tfstate
+*.tfstate.*
+.vagrant/
+
+# Temporary files and raw evidence
+tmp/
+evidence/raw/
